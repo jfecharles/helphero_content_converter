@@ -1,0 +1,9 @@
+*.class
+target/
+.metadata/
+.settings/
+doc/
+doc.zip
+sps-tree.v1.0.xsl
+sps.v1.0.xsl
+

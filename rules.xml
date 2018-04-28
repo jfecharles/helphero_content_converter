@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules document_root="//body/div[starts-with(@class,'document')]" debug="true">
+	<rule description="Folder Partitioning" type="partition" target="folder">
+		<tasks>
+			<task type="src_path" src="//div/p"><match type="expr" expr="starts_with" attr="class" attr_value="HeadingProcessName"/></task>
+			<!-- These also  all work
+			<task type="src_text_match" dependent="src_path" join="AND"><match type="expr" expr="starts-with" expr_value="Cash advance for early repayment"/></task>
+			<task type="src_text_match" dependent="src_path" join="AND"><match type="expr" expr="contains" expr_value="for early repayment"/></task>
+			<task type="src_text_match" dependent="src_path" join="AND"><match type="regex" pattern="^Cash advance for early repayment.*$"/></task>
+			<task type="target_name" dependent="src_path"><match type="regex" pattern="^(Cash advance for early repayment).*$" replacewith="$1"/></task>
+			-->
+			<task type="partition_options" keep_intro_nodes="no"/>
+		</tasks>
+	</rule>
+	<rule description="Document Partitioning" type="partition" target="document">
+		<tasks>
+			<task type="src_path" src="//div/div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Heading1"/></task>
+			<task type="partition_options" keep_intro_nodes="yes" intro_partition_title="Document Preliminaries"/>
+		</tasks>
+	</rule>
+	<rule description="Section Partitioning" type="partition" target="section">
+		<tasks>
+			<task type="src_path" src="//div/div/div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Heading2"/></task>
+			<task type="partition_options" keep_intro_nodes="yes" intro_partition_title="Section Preliminaries"/>
+		</tasks>
+	</rule>
+	<rule description="Task Partitioning" type="partition" target="task">
+		<tasks>
+			<task type="src_path" src="//div/div/div/div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Heading3"/></task>
+			<task type="partition_options" keep_intro_nodes="yes" intro_partition_title="Task Preliminaries"/>
+		</tasks>
+	</rule>
+</rules> 

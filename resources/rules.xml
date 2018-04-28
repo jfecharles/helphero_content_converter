@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  This is a sample rules file providing basic rules partitioning -->
+<rules document_root="//body/div[starts-with(@class,'document')]">
+	<rule description="Folder Partitioning" type="partition" target="folder">
+		<tasks>
+			<task type="src_path" src="//div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Title"/></task>
+			<task type="partition_options" keep_intro_nodes="no" intro_partition_title="Subfolder"/>
+		</tasks>
+	</rule>
+	<rule description="Document Partitioning" type="partition" target="document">
+		<tasks>
+			<task type="src_path" src="//div/div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Heading1"/></task>
+			<task type="partition_options" keep_intro_nodes="yes" intro_partition_title="Document Preliminaries"/>
+		</tasks>
+	</rule>
+	<rule description="Section Partitioning" type="partition" target="section">
+		<tasks>
+			<task type="src_path" src="//div/div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Heading2"/></task>
+			<task type="partition_options" keep_intro_nodes="yes" intro_partition_title="Section Preliminaries"/>
+		</tasks>
+	</rule>
+	<rule description="Task Partitioning" type="partition" target="task">
+		<tasks>
+			<task type="src_path" src="//div/div/p"><match type="expr" expr="starts_with" attr="class" attr_value="Heading3"/></task>
+			<task type="partition_options" keep_intro_nodes="yes" intro_partition_title="Task Preliminaries"/>
+		</tasks>
+	</rule>
+</rules> 
